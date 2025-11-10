@@ -1,0 +1,45 @@
+.card {
+    margin: 50px;
+    position: relative;
+    border: 2px solid var(--accent-color);
+    padding: 10px;
+    background-color: var(--background-color-darker);
+}
+
+.cardTitle {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 5px;
+    position: absolute;
+    top: -55px;
+    color: var(--header-color);
+    font-size: 1.3rem;
+}
+
+.cardTitle h2 {
+    border: 2px solid var(--accent-color);
+    background-color: var(--background-color-darker);
+    padding: 10px;
+}
+
+.cardBody {
+    margin-top: 40px;
+    margin-left: 10px;
+}
+
+.cardDescription {
+    font-size: 1em;
+    color: var(--accent-color);
+}
+
+.cardLocation {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+    color: var(--header-color);
+}
+
+.cardLocation:hover {
+    color: var(--golden-color);
+}

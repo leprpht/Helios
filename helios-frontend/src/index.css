@@ -1,0 +1,16 @@
+:root {
+  font-family: 'Courier New', Courier, monospace;
+
+  --background-color-lighter: hsl(176, 63%, 8%);
+  --background-color-darker: hsl(173, 63%, 5%);
+  --accent-color: hsl(170, 44%, 47%);
+  --header-color: hsl(173, 56%, 86%);
+  --crimson-color: hsl(344, 55%, 40%);
+  --golden-color: hsl(44, 62%, 82%);
+  --font-size-base: 16px;
+}
+
+body {
+  margin: 0;
+  background-color: var(--background-color-lighter);
+}
