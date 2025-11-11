@@ -4,7 +4,7 @@ import CollectibleCard from './components/CollectibleCard/CollectibleCard'
 import './App.css'
 
 function App() {
-  const [foundStates, setFoundStates] = useState([false, false]);
+  const [foundStates, setFoundStates] = useState([false, true]);
 
   const toggleFound = (index: number, value: boolean) => {
     setFoundStates(prev => {
