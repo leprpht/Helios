@@ -1,5 +1,6 @@
 package com.leprpht.heliosbackend.service
 
+import com.leprpht.heliosbackend.constants.*
 import com.leprpht.heliosbackend.dto.UnpackedUser
 import com.leprpht.heliosbackend.model.User
 import com.leprpht.heliosbackend.repository.HeliosRepository
@@ -13,8 +14,6 @@ class HeliosService(
     private val heliosRepository: HeliosRepository,
     private val passwordEncoder: PasswordEncoder
 ) {
-    private val COLLECTIBLES_COUNT = 155
-
     fun registerAndGetToken(username: String, password: String): String {
         if (heliosRepository.existsUserByUsername(username))
             throw IllegalArgumentException("User already exists")

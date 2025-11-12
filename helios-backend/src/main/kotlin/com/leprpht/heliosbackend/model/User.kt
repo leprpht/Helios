@@ -1,5 +1,6 @@
 package com.leprpht.heliosbackend.model
 
+import com.leprpht.heliosbackend.util.Base64Parser
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.index.Indexed
 import org.springframework.data.mongodb.core.mapping.Document
@@ -14,7 +15,7 @@ data class User(
 
     val password: String,
 
-    val collectibles: String? = null,
+    val collectibles: String? = Base64Parser.booleansToString(BooleanArray(155) { false }),
 
     val tokenVersion: Int = 0
 )
