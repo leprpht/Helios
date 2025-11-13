@@ -8,6 +8,7 @@
     border-top: 2px solid var(--accent-color);
     border-bottom: 2px solid var(--accent-color);
     box-sizing: border-box;
+    user-select: none;
 }
 
 .navbar div {
@@ -18,7 +19,7 @@
 .header {
     color: var(--header-color);
     font-size: 2rem;
-    margin-left: 20px;
+    margin: 2px 0 0 20px;
 }
 
 .logo {
