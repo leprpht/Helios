@@ -18,7 +18,7 @@ data class UnpackedUser(
 
     override fun hashCode(): Int {
         var result = username.hashCode()
-        result = 31 * result + (collectibles?.contentHashCode() ?: 0)
+        result = 31 * result + collectibles.contentHashCode()
         return result
     }
 }
