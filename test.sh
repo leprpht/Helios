@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-cd helios-backend || { echo "Backend folder not found!"; exit 1; }
+cd helios-backend
 
 if [ -f .env ]; then
   set -o allexport
@@ -12,4 +12,13 @@ else
   exit 1
 fi
 
+echo -e "\033[33m[HELIOS BACKEND]\033[0m"
+
 ./gradlew test --info
+
+echo -e
+echo -e "\033[36m[HELIOS FRONTEND]\033[0m"
+
+cd ../helios-frontend
+
+npm run test
