@@ -1,0 +1,43 @@
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.card {
+    margin: 50px;
+    border: 2px solid var(--accent-color);
+    padding: 10px;
+    background: linear-gradient(to bottom, var(--background-color-darker) 25%, var(--background-color-lighter) 50%, var(--background-color-darker) 75%);
+    justify-content: space-between;
+}
+
+.card h4 {
+    margin-top: 0;
+    font-size: 1.5em;
+    color: var(--accent-color);
+}
+
+.card h5 {
+    font-size: 11em;
+    font-weight: lighter;
+    margin-top: 50px;
+    margin-bottom: 0;
+    color: var(--golden-color);
+}
+
+.card p {
+    font-size: 1.2em;
+    color: var(--header-color);
+}
+
+.card .row {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 3fr 1fr 3fr 3fr;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.card .separator {
+    color: var(--accent-color);
+}
