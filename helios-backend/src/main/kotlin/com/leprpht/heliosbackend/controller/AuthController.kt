@@ -4,6 +4,7 @@ import com.leprpht.heliosbackend.dto.LoginData
 import com.leprpht.heliosbackend.dto.UpdatePasswordDto
 import com.leprpht.heliosbackend.service.HeliosService
 import com.leprpht.heliosbackend.util.TokenUtil
+import jakarta.validation.Valid
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.PostMapping
@@ -19,7 +20,7 @@ class AuthController(private val heliosService: HeliosService) {
 
     @PostMapping("/register")
     fun register(
-        @RequestBody loginData: LoginData
+        @Valid @RequestBody loginData: LoginData
     ): ResponseEntity<Any> {
         return try {
             val token = heliosService.registerAndGetToken(loginData.username, loginData.password)
@@ -31,7 +32,7 @@ class AuthController(private val heliosService: HeliosService) {
 
     @PostMapping("/login")
     fun login(
-        @RequestBody loginData: LoginData
+        @Valid @RequestBody loginData: LoginData
     ): ResponseEntity<Any> {
         return try {
             val token = heliosService.loginAndGetToken(loginData.username, loginData.password)
@@ -44,7 +45,7 @@ class AuthController(private val heliosService: HeliosService) {
     @PutMapping("/update-password")
     fun updatePassword(
         @RequestHeader("Authorization") token: String,
-        @RequestBody passwordUpdate: UpdatePasswordDto
+        @Valid @RequestBody passwordUpdate: UpdatePasswordDto
     ): ResponseEntity<Any> {
         val cleanToken = TokenUtil.extractToken(token)
         return try {
@@ -58,7 +59,7 @@ class AuthController(private val heliosService: HeliosService) {
     @DeleteMapping("/delete-account")
     fun deleteAccount(
         @RequestHeader("Authorization") token: String,
-        @RequestBody loginData: LoginData
+        @Valid @RequestBody loginData: LoginData
     ): ResponseEntity<Any> {
         val cleanToken = TokenUtil.extractToken(token)
         return try {
