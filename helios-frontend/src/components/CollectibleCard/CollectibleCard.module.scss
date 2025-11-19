@@ -1,0 +1,45 @@
+@use '../../variables.scss';
+
+.card {
+    margin: 50px;
+    position: relative;
+    border: 2px solid variables.$accent-color;
+    padding: 10px;
+    background-color: variables.$background-color-darker;
+
+    .cardTitle {
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-bottom: 5px;
+        position: absolute;
+        top: -55px;
+        color: variables.$header-color;
+
+        h2 {
+            border: 2px solid variables.$accent-color;
+            background-color: variables.$background-color-darker;
+            padding: 10px;
+        }
+    }
+
+    .cardBody {
+        margin: 40px 0 0 10px;
+
+        .cardDescription {
+            font-size: 1em;
+            color: variables.$accent-color;
+        }
+        
+        .cardLocation {
+            display: inline-block;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            color: variables.$header-color;
+        
+            &:hover {
+              color: variables.$golden-color;
+            }
+        }
+    }
+}

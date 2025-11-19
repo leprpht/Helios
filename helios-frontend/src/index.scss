@@ -1,0 +1,10 @@
+@use 'variables';
+
+:root {
+  font-family: variables.$font-family;
+}
+
+body {
+  margin: 0;
+  background-color: variables.$background-color-lighter;
+}

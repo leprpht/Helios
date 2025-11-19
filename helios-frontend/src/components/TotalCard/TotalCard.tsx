@@ -1,4 +1,4 @@
-import styles from './TotalCard.module.css';
+import styles from './TotalCard.module.scss';
 
 type TotalCardData = {
   percentage: number;

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Navbar from './components/Navbar/Navbar'
 import CollectibleCard from './components/CollectibleCard/CollectibleCard'
-import './App.css'
+import './App.scss'
 import TotalCard from './components/TotalCard/TotalCard';
 
 function App() {

@@ -1,6 +1,6 @@
 import type { Collectible } from '../../types/Collectible';
 import Checkbox from '../Checkbox/Checkbox';
-import styles from './CollectibleCard.module.css';
+import styles from './CollectibleCard.module.scss';
 
 type Props = Collectible & {
   onToggleFound: (newValue: boolean) => void;
