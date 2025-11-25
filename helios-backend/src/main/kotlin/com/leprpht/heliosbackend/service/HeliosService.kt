@@ -36,11 +36,10 @@ class HeliosService(
     fun getUserData(token: String): UnpackedUser {
         val user = verifyTokenAndGetUser(token)
         val data = try {
-            if (user.collectibles.isNullOrBlank()) {
+            if (user.collectibles.isNullOrBlank())
                 BooleanArray(COLLECTIBLES_COUNT) { false }
-            } else {
+            else
                 Base64Parser.stringToBooleans(user.collectibles, COLLECTIBLES_COUNT)
-            }
         } catch (e: IllegalArgumentException) {
             throw IllegalArgumentException("Stored collectibles are invalid")
         }
@@ -54,11 +53,10 @@ class HeliosService(
     fun getUserLogs(token: String): UnpackedUser {
         val user = verifyTokenAndGetUser(token)
         val data = try {
-            if (user.collectibles.isNullOrBlank()) {
+            if (user.collectibles.isNullOrBlank())
                 BooleanArray(COLLECTIBLES_COUNT) { false }
-            } else {
+            else
                 Base64Parser.extractLogs(user.collectibles)
-            }
         } catch (e: IllegalArgumentException) {
             throw IllegalArgumentException("Stored collectibles are invalid")
         }
@@ -72,11 +70,10 @@ class HeliosService(
     fun getUserCiphers(token: String): UnpackedUser {
         val user = verifyTokenAndGetUser(token)
         val data = try {
-            if (user.collectibles.isNullOrBlank()) {
+            if (user.collectibles.isNullOrBlank())
                 BooleanArray(COLLECTIBLES_COUNT) { false }
-            } else {
+            else
                 Base64Parser.extractCiphers(user.collectibles)
-            }
         } catch (e: IllegalArgumentException) {
             throw IllegalArgumentException("Stored collectibles are invalid")
         }
@@ -139,9 +136,8 @@ class HeliosService(
         val user = heliosRepository.findByUsername(username)
             ?: throw IllegalArgumentException("Invalid token")
 
-        if (user.tokenVersion != tokenVersion) {
+        if (user.tokenVersion != tokenVersion)
             throw IllegalArgumentException("Invalid token")
-        }
 
         return user
     }
