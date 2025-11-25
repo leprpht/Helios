@@ -27,6 +27,32 @@ class CollectibleController(private val heliosService: HeliosService) {
         }
     }
 
+    @GetMapping("/data/logs")
+    fun getLogs(
+        @RequestHeader("Authorization") token: String
+    ): ResponseEntity<Any> {
+        val cleanToken = TokenUtil.extractToken(token)
+        return try {
+            val userData = heliosService.getUserLogs(cleanToken)
+            ResponseEntity.ok(userData)
+        } catch (e: IllegalArgumentException) {
+            ResponseEntity.status(400).body(e.message)
+        }
+    }
+
+    @GetMapping("/data/ciphers")
+    fun getCiphers(
+        @RequestHeader("Authorization") token: String
+    ): ResponseEntity<Any> {
+        val cleanToken = TokenUtil.extractToken(token)
+        return try {
+            val userData = heliosService.getUserCiphers(cleanToken)
+            ResponseEntity.ok(userData)
+        } catch (e: IllegalArgumentException) {
+            ResponseEntity.status(400).body(e.message)
+        }
+    }
+
     @PutMapping("/update-collectibles")
     fun updateCollectibles(
         @RequestHeader("Authorization") token: String,

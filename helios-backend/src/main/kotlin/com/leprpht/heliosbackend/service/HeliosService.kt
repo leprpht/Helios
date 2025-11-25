@@ -51,6 +51,42 @@ class HeliosService(
         )
     }
 
+    fun getUserLogs(token: String): UnpackedUser {
+        val user = verifyTokenAndGetUser(token)
+        val data = try {
+            if (user.collectibles.isNullOrBlank()) {
+                BooleanArray(COLLECTIBLES_COUNT) { false }
+            } else {
+                Base64Parser.extractLogs(user.collectibles)
+            }
+        } catch (e: IllegalArgumentException) {
+            throw IllegalArgumentException("Stored collectibles are invalid")
+        }
+
+        return UnpackedUser(
+            username = user.username,
+            collectibles = data
+        )
+    }
+
+    fun getUserCiphers(token: String): UnpackedUser {
+        val user = verifyTokenAndGetUser(token)
+        val data = try {
+            if (user.collectibles.isNullOrBlank()) {
+                BooleanArray(COLLECTIBLES_COUNT) { false }
+            } else {
+                Base64Parser.extractCiphers(user.collectibles)
+            }
+        } catch (e: IllegalArgumentException) {
+            throw IllegalArgumentException("Stored collectibles are invalid")
+        }
+
+        return UnpackedUser(
+            username = user.username,
+            collectibles = data
+        )
+    }
+
     fun updateCollectibles(token: String, collectibles: BooleanArray) {
         if (collectibles.size != COLLECTIBLES_COUNT)
             throw IllegalArgumentException("Collectibles array must be $COLLECTIBLES_COUNT long")

@@ -1,5 +1,6 @@
 package com.leprpht.heliosbackend.util
 
+import com.leprpht.heliosbackend.constants.*
 import java.util.Base64
 
 object Base64Parser {
@@ -17,4 +18,24 @@ object Base64Parser {
         }
     }
 
+     private fun extractSelectedBooleans(data: String, size: Int, ranges: List<IntRange>): BooleanArray {
+        val allBooleans = stringToBooleans(data, size)
+        val resultList = mutableListOf<Boolean>()
+        for (range in ranges) {
+            for (i in range) {
+                if (i in allBooleans.indices) {
+                    resultList.add(allBooleans[i])
+                } else {
+                    throw IndexOutOfBoundsException("Index $i is out of bounds for array of size $size")
+                }
+            }
+        }
+        return resultList.toBooleanArray()
+    }
+
+    fun extractLogs(data: String): BooleanArray =
+        extractSelectedBooleans(data, COLLECTIBLES_COUNT, LOG_RANGES)
+
+    fun extractCiphers(data: String): BooleanArray =
+        extractSelectedBooleans(data, COLLECTIBLES_COUNT, CIPHER_RANGES)
 }
