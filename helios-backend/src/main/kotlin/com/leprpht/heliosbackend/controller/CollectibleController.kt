@@ -4,6 +4,7 @@ import com.leprpht.heliosbackend.service.HeliosService
 import com.leprpht.heliosbackend.util.TokenUtil
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestHeader
@@ -27,29 +28,32 @@ class CollectibleController(private val heliosService: HeliosService) {
         }
     }
 
-    @GetMapping("/data/logs")
-    fun getLogs(
-        @RequestHeader("Authorization") token: String
+    @GetMapping("/data/{type}")
+    fun getSpecificData(
+        @RequestHeader("Authorization") token: String,
+        @PathVariable type: String
     ): ResponseEntity<Any> {
         val cleanToken = TokenUtil.extractToken(token)
-        return try {
-            val userData = heliosService.getUserLogs(cleanToken)
-            ResponseEntity.ok(userData)
-        } catch (e: IllegalArgumentException) {
-            ResponseEntity.status(400).body(e.message)
-        }
-    }
-
-    @GetMapping("/data/ciphers")
-    fun getCiphers(
-        @RequestHeader("Authorization") token: String
-    ): ResponseEntity<Any> {
-        val cleanToken = TokenUtil.extractToken(token)
-        return try {
-            val userData = heliosService.getUserCiphers(cleanToken)
-            ResponseEntity.ok(userData)
-        } catch (e: IllegalArgumentException) {
-            ResponseEntity.status(400).body(e.message)
+        when (type.lowercase()) {
+            "logs" -> {
+                return try {
+                    val userData = heliosService.getUserLogs(cleanToken)
+                    ResponseEntity.ok(userData)
+                } catch (e: IllegalArgumentException) {
+                    ResponseEntity.status(400).body(e.message)
+                }
+            }
+            "ciphers" -> {
+                return try {
+                    val userData = heliosService.getUserCiphers(cleanToken)
+                    ResponseEntity.ok(userData)
+                } catch (e: IllegalArgumentException) {
+                    ResponseEntity.status(400).body(e.message)
+                }
+            }
+            else -> {
+                return ResponseEntity.status(400).body("Invalid type")
+            }
         }
     }
 
