@@ -54,7 +54,7 @@ class HeliosService(
         val user = verifyTokenAndGetUser(token)
         val data = try {
             if (user.collectibles.isNullOrBlank())
-                BooleanArray(COLLECTIBLES_COUNT) { false }
+                BooleanArray(LOGS_COUNT) { false }
             else
                 Base64Parser.extractLogs(user.collectibles)
         } catch (e: IllegalArgumentException) {
@@ -71,7 +71,7 @@ class HeliosService(
         val user = verifyTokenAndGetUser(token)
         val data = try {
             if (user.collectibles.isNullOrBlank())
-                BooleanArray(COLLECTIBLES_COUNT) { false }
+                BooleanArray(CIPHER_COUNT) { false }
             else
                 Base64Parser.extractCiphers(user.collectibles)
         } catch (e: IllegalArgumentException) {
