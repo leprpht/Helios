@@ -1,6 +1,7 @@
 import styles from './Navbar.module.scss';
 
 export default function Navbar() {
+  
   return (
     <nav className={styles.navbar}>
       <div>
@@ -19,7 +20,7 @@ export default function Navbar() {
                 <a href="#">Ciphers</a>
             </li>
             <li className={styles.navItem}>
-                <a href="#">Biomes</a>
+                <a href="#">Auth</a>
             </li>
         </ul>
       </div>
